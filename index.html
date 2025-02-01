@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Кулинарный сайт</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#">Главная</a></li>
+                <li><a href="#recipes">Рецепты</a></li>
+                <li><a href="#masterclasses">Мастер-классы</a></li>
+                <li><a href="#add-recipe">Добавить рецепт</a></li>
+                <li><a href="#profile">Профиль</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <main>
+        <!-- Слайд-шоу -->
+        <section id="slider">
+            <div class="slideshow-container">
+                <div class="mySlides fade">
+                    <img src="images/recipe1.jpg" style="width:100%">
+                    <div class="text">Популярный рецепт: Пирог с яблоками</div>
+                </div>
+                
+                <div class="mySlides fade">
+                    <img src="images/recipe2.jpg" style="width:100%">
+                    <div class="text">Популярный рецепт: Салат Цезарь</div>
+                </div>
+                
+                <div class="mySlides fade">
+                    <img src="images/recipe3.jpg" style="width:100%">
+                    <div class="text">Популярный рецепт: Лазанья</div>
+                </div>
+                
+                <a class="prev" onclick="plusSlides(-1)">❮</a>
+                <a class="next" onclick="plusSlides(1)">❯</a>
+            </div>
+            
+            <br>
+            
+            <div style="text-align:center">
+                <span class="dot" onclick="currentSlide(1)"></span>
+                <span class="dot" onclick="currentSlide(2)"></span>
+                <span class="dot" onclick="currentSlide(3)"></span>
+            </div>
+        </section>
+        
+        <!-- Последние добавленные рецепты -->
+        <section id="latest-recipes">
+            <h2>Последние добавленные рецепты</h2>
+            <div class="recipe-card">
+                <img src="images/recipe4.jpg" alt="Название рецепта">
+                <p>Название рецепта</p>
+            </div>
+            <div class="recipe-card">
+                <img src="images/recipe5.jpg" alt="Название рецепта">
+                <p>Название рецепта</p>
+            </div>
+            <div class="recipe-card">
+                <img src="images/recipe6.jpg" alt="Название рецепта">
+                <p>Название рецепта</p>
+            </div>
+        </section>
+        
+        <!-- Категории рецептов -->
+        <section id="categories">
+            <h2>Категории рецептов</h2>
+            <div class="category">
+                <img src="images/category-breakfast.jpg" alt="Завтрак">
+                <p>Завтраки</p>
+            </div>
+            <div class="category">
+                <img src="images/category-lunch.jpg" alt="Обед">
+                <p>Обеды</p>
+            </div>
+            <div class="category">
+                <img src="images/category-dinner.jpg" alt="Ужин">
+                <p>Ужины</p>
+            </div>
+        </section>
+        
+        <!-- Поиск и фильтрация -->
+        <section id="search-filter">
+            <form action="/search" method="get">
+                <input type="text" placeholder="Найти рецепт..." name="q">
+                <button type="submit">Искать</button>
+            </form>
+        </section>
+    </main>
+    
+    <footer>
+        <p>© Кулинарный сайт, 2023</p>
+    </footer>
+    
+    <script>
+        let slideIndex = 1;
+        showSlides(slideIndex);
+        
+        function plusSlides(n) {
+          showSlides(slideIndex += n);
+        }
+        
+        function currentSlide(n) {
+          showSlides(slideIndex = n);
+        }
+        
+        function showSlides(n) {
+          let i;
+          let slides = document.getElementsByClassName("mySlides");
+          let dots = document.getElementsByClassName("dot");
+          if (n > slides.length) {slideIndex = 1}
+          if (n < 1) {slideIndex = slides.length}
+          for (i = 0; i < slides.length; i++) {
+              slides[i].style.display = "none";
+          }
+          for (i = 0; i < dots.length; i++) {
+              dots[i].className = dots[i].className.replace(" active", "");
+          }
+          slides[slideIndex-1].style.display = "block";
+          dots[slideIndex-1].className += " active";
+        }
+    </script>
+</body>
+</html>
